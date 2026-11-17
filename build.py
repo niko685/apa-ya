@@ -66,7 +66,7 @@ GITHUB_REPO = "kenangan"
 IG_HANDLE = "nanopeterpen"  # sesuaikan akun IG-mu
 
 # Streamable embed (sudah di public/pora/index.html)
-STREAMABLE_URL = "https://streamable.com/e/29jp1w"
+STREAMABLE_URL = "https://streamable.com/e/ae7u5r"
 
 # Path
 ROOT = Path(__file__).resolve().parent
