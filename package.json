@@ -1,5 +1,8 @@
 {
   "name": "makam-china",
   "private": true,
-  "description": "Static CTF site for Vercel"
+  "description": "Static CTF site for Vercel",
+  "dependencies": {
+    "@vercel/edge": "^1.2.1"
+  }
 }

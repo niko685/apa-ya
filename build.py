@@ -46,6 +46,13 @@ ZIP_PASSWORD = "nanopeter"
 # Morse word → jalur PDF: /neverland.pdf
 MORSE_WORD = "NEVERLAND"
 
+# File .txt di dalam zip (petunjuk: harus buka PDF, nama dari morse)
+ZIP_HINT_NAME = "baca_dulu.txt"
+# Samar tapi ada kata pdf
+ZIP_HINT_TEXT = """Dengarkan yang berdetak.
+Namanya mengarah ke sebuah pdf di situs ini.
+"""
+
 # Teks spektrogram
 SPEC_TRAP_TEXT = "laporan.pdf"       # suara_a (pengecoh)
 SPEC_FLAG_TEXT = FLAG_HALF_SPEC      # suara_b (setengah flag)
@@ -494,11 +501,15 @@ def main() -> int:
     text_to_spectrogram_wav(wav_a, SPEC_TRAP_TEXT)
     text_to_spectrogram_wav(wav_b, SPEC_FLAG_TEXT)
 
+    hint_txt = BUILD_TMP / ZIP_HINT_NAME
+    hint_txt.write_text(ZIP_HINT_TEXT.strip() + "\n", encoding="utf-8")
+
     build_kenangan_polyglot(
         {
             "suara_a.wav": wav_a,
             "suara_b.wav": wav_b,
             "suara_morse.wav": wav_m,
+            ZIP_HINT_NAME: hint_txt,
         }
     )
 
