@@ -1,7 +1,10 @@
 # makam-china
 
+Generate aset (lokal saja):
+
 ```powershell
-python -m pip install -r requirements.txt
+python -m pip install -r requirements-build.txt
 python build.py
-vercel --prod
 ```
+
+Deploy di Vercel: **Framework Preset = Other** (jangan Python).

@@ -1,5 +1,6 @@
 {
-  "version": 2,
+  "framework": null,
+  "buildCommand": null,
   "rewrites": [
     { "source": "/pora", "destination": "/pora/index.html" },
     { "source": "/pora/", "destination": "/pora/index.html" }
