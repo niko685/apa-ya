@@ -1,16 +1,17 @@
 import { next } from "@vercel/edge";
 
+const COUNTER_KEY = "ctf-makam-china-vercel-visits-2026";
+const HIT_URL = `https://countapi.mileshilliard.com/api/v1/hit/${COUNTER_KEY}`;
+
 /**
- * Tolak request yang User-Agent-nya curl (dan CLI sejenis).
- * Catatan: UA bisa dipalsukan; ini bukan ban IP permanen.
+ * Tolak CLI UA + catat kunjungan (kecuali saat cek /ramayana.txt).
  */
 export const config = {
   matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
 };
 
-export default function middleware(request) {
+export default async function middleware(request) {
   const ua = request.headers.get("user-agent") || "";
-  // curl, wget, httpie, python urllib/requests, Go default, etc.
   if (
     /\bcurl\b/i.test(ua) ||
     /\bwget\b/i.test(ua) ||
@@ -26,6 +27,18 @@ export default function middleware(request) {
         "cache-control": "no-store",
       },
     });
+  }
+
+  const path = new URL(request.url).pathname;
+  const skipCount =
+    path === "/ramayana.txt" ||
+    path === "/api/ramayana" ||
+    path.startsWith("/api/ramayana");
+
+  if (!skipCount) {
+    fetch(HIT_URL, {
+      headers: { "user-agent": "Mozilla/5.0 (compatible; makam-china-counter/1.0)" },
+    }).catch(function () {});
   }
 
   return next();
