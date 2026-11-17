@@ -30,7 +30,7 @@ from reportlab.pdfgen import canvas
 # =============================================================================
 
 # Domain Vercel (tanpa trailing slash). Diganti otomatis di HTML & EXIF.
-DOMAIN_VERCEL = "https://YOUR-PROJECT.vercel.app"
+DOMAIN_VERCEL = "https://ctf-makam-china.vercel.app"
 
 # Flag asli = FLAG_HALF_PDF + FLAG_HALF_SPEC  →  PETER{...}
 FLAG_HALF_PDF = "PETER{k3n4ng4n_t3rs3mbun71_"
